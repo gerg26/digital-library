@@ -1,0 +1,21 @@
+.top-navigation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (min-width: 720px) {
+    .top-navigation {
+        flex-direction: row;
+        justify-content: space-between;
+    }   
+}
+
+.top-navigation-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 30px;
+    column-gap: 20px;
+}

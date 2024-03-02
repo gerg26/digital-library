@@ -1,0 +1,110 @@
+/* Inter font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+/* imports Roboto Mono font; for title */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+.button {
+    border-radius: 60px;
+    font-family: 'Inter';
+    padding: 10px 30px;
+    cursor: pointer;
+    user-select: none !important;
+}
+
+.primary-button {
+    display: flex;
+    justify-content: center;
+    background-color: #007AFF;
+    color: white;
+}
+
+.secondary-button {
+    display: flex;
+    justify-content: center;
+    background-color: #FFFFFF;
+    color: black;
+}
+
+.title {
+    font-size: 40px;
+    /* line-height: 1 !important; */
+    color: white;
+    font-family: 'Roboto Mono';
+}
+
+@media screen and (min-width:720px) {
+    .title {
+        font-size: 55px;
+    }
+}
+
+.text, .small-text {
+    font-family: 'Inter';
+}
+
+.small-text {
+    font-size: 20px;
+}
+
+.link {
+    color: #007AFF;
+    text-decoration: underline;
+}
+
+.top-bar {
+    /* box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.75); */
+}
+
+.sidebar {
+    box-shadow: 3px 3px 4px 0px #A6A6A640;
+}
+
+/*  */
+.my-input {
+    border-radius: 10px;
+    background-color: #D9D9D9;
+    padding: 10px 20px;
+    border: none !important;
+    height: 50px;
+    font-family: 'Inter';
+    color: black;
+    font-weight: 400;
+    font-size: 15px;
+    width: 100%;
+}
+
+/*  */
+.my-input::placeholder {
+    font-family: 'Inter';
+    color: gray;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+th {
+    @apply  bg-[#F2F2F2] px-3 py-3 uppercase !tracking-tighter text-left border-collapse text-gray-600 !font-bold
+}
+
+tr:nth-child(odd) {
+    @apply bg-[#E6E6E6]
+}
+
+tr:nth-child(even) {
+    @apply !bg-gray-100
+}
+
+td {
+    @apply px-3 py-3 text-left border-collapse
+}

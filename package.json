@@ -1,0 +1,28 @@
+{
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite & npx tailwindcss -i resources/css/input.css -o resources/css/app.css --watch",
+        "build": "npx tailwindcss -i resources/css/input.css -o resources/css/app.css --minify && vite build"
+    },
+    "devDependencies": {
+        "axios": "^1.6.4",
+        "laravel-vite-plugin": "^1.0.0",
+        "tailwindcss": "^3.4.1",
+        "vite": "^5.0.0"
+    },
+    "dependencies": {
+        "@emotion/react": "^11.11.3",
+        "@emotion/styled": "^11.11.0",
+        "@inertiajs/react": "^1.0.14",
+        "@mui/material": "^5.15.10",
+        "css-loader": "^6.10.0",
+        "fs": "^0.0.1-security",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "sweetalert2": "^11.10.5",
+        "sweetalert2-react-content": "^5.0.7",
+        "xlsx": "^0.18.5",
+        "xlsx-js-style": "^1.2.0"
+    }
+}
