@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SubmitReviewRequest;
 use App\Models\Buku;
 use App\Models\Peminjaman;
+use App\Models\Review;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -98,5 +100,48 @@ class BookService extends Controller
             'status' => true,
             'text' => 'Berhasil mengembalikan buku!'
         ]);
+    }
+
+    public function submitReview(SubmitReviewRequest $request) {
+        // gets book
+        $book = Buku::where('BukuId', $request['book-id'])->first();
+
+        // gets user
+        $user = Auth::user();
+
+        // gets current review by this user
+        $currentReview = Review::where('BukuId', $book->BukuId)->where('UserId', $user->UserId)->first();
+
+        // ensure current review null
+        if(!empty($currentReview)) {
+            return response()->json([
+                'status' => false,
+                'text' => 'Anda sudah pernah mereview buku ini!'
+            ]);
+        }
+
+        // create review
+        $review = new Review([
+            'UserId' => $user->UserId,
+            'BukuId' => $book->BukuId,
+            'Ulasan' => $request["review"]
+        ]);
+
+        $createReviewResult = $review->save();
+
+        // handles
+        if($createReviewResult) {
+            return response()->json([
+                'status' => true,
+                'text' => 'Berhasil buat review!',
+                'review' => $review
+            ]);
+        }
+        else {
+            return response()->json([
+                'status' => false,
+                'text' => 'Gagal buat review; sesuatu terjadi!'
+            ]);
+        }
     }
 }

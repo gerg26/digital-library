@@ -5,10 +5,15 @@ import PrimaryButton from "../../Components/Shared/PrimaryButton";
 import Swal from 'sweetalert2'
 import withReactContent from "sweetalert2-react-content";
 import axios from "axios";
+import ReviewForm from "../../Components/BookPage/ReviewForm";
+import Reviews from "../../Components/BookPage/Reviews";
 
-export default function BookDetailPage({user, book, borrow}) {    
+export default function BookDetailPage({user, book, borrow, reviews}) {    
     // use state isBorrowed
     const [isBorrowed, setIsBorrowed] = useState(borrow != null);
+
+    // 
+    const [currentReviews, setCurrentReviews] = useState(reviews)
 
     // handles borrow book
     const handleBorrowBook = () => {
@@ -112,6 +117,11 @@ export default function BookDetailPage({user, book, borrow}) {
         })
     }
 
+    // 
+    const handleReviewSubmitSuccess = (review) => {
+        
+    }
+
     // returns
     return (
         <BookPageLayout user={user}>
@@ -160,6 +170,13 @@ export default function BookDetailPage({user, book, borrow}) {
                             <PrimaryButton onClick={handleBorrowBook} text="Pinjam Buku"/>
                     }
                 </div>
+            </div>
+            <div className="mt-5">
+                <h2 className="text-3xl font-semibold mb-3">Review</h2>
+                <div className="my-5">
+                    <Reviews reviews={currentReviews}/>
+                </div>
+                <ReviewForm onSubmitSuccess={handleReviewSubmitSuccess} bookId={book?.BukuId}/>
             </div>
         </BookPageLayout>
     );

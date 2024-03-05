@@ -11,4 +11,10 @@ class Review extends Model
 
     public $table = 'ulasanbuku';
     protected $primaryKey = 'UlasanId';
+
+    protected $guarded = [];
+
+    public function user() {
+        return $this->belongsTo(User::class, 'UserId', 'UserId');
+    }
 }

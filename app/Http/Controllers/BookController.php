@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Buku;
 use App\Models\Peminjaman;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -39,18 +40,21 @@ class BookController extends Controller
         // gets book
         $book = Buku::where('BukuId', $bookId)->first();
 
-        // gets borrow
-        $borrow = null;
-        if(!empty($user)) {
-            $borrow = Peminjaman::where('UserId', Auth::user()->UserId)->where('BukuId', $bookId)
-            ->where('StatusPeminjaman', 'Diterima')
-            ->first();
-        }
-
         // ensure book exists
         if(empty($book)) {
             return response()->redirectToRoute('book.list');
         }
+
+        // gets borrow
+        $borrow = null;
+        if(!empty($user)) {
+            $borrow = Peminjaman::where('UserId', Auth::user()?->UserId)->where('BukuId', $bookId)
+            ->where('StatusPeminjaman', 'Diterima')
+            ->first();
+        }
+
+        // gets reviews
+        $reviews = Review::with(['user'])->where('BukuId', $bookId)->get();
 
         // fills cover
         if(!empty($book->filename)) {
@@ -60,7 +64,8 @@ class BookController extends Controller
         return Inertia::render('Home/BookDetailsPage', [
             "user" => $user,
             "book" => $book,
-            "borrow" => $borrow
+            "borrow" => $borrow,
+            "reviews" => $reviews
         ]);
     }
 
