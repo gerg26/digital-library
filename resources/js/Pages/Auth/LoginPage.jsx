@@ -25,7 +25,7 @@ export default function LoginPage() {
         MySwal.fire({
             didOpen: () => {
                 MySwal.showLoading();
-            }  
+            }
         })
 
         // gets baseurl
@@ -37,7 +37,7 @@ export default function LoginPage() {
             axios.post(`${baseUrl}/api/auth/sign-in`, formData)
             .then((response) => {
                 // handles success
-                if(response.data.status) {   
+                if(response.data.status) {
                     MySwal.fire({
                         icon: 'success',
                         title: 'Berhasil',

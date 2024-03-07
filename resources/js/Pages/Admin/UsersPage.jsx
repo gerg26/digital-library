@@ -10,13 +10,13 @@ export default function UsersPage({user, users}) {
         <AdminPageLayout user={user}>
             <div className="flex justify-end mb-5">
                 {
-                    user != null && user.Tipe == "Admin" ? 
+                    user != null && user.Tipe == "Admin" ?
                         <PrimaryButton link={`${baseUrl}/admin/add-new-petugas`}>
                             Tambah Petugas
                         </PrimaryButton>
                     : <></>
                 }
-                
+
             </div>
             <Users users={users}/>
         </AdminPageLayout>

@@ -11,7 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('koleksipribadi', function (Blueprint $table) {
+            $table->id("KoleksiID");
+            $table->foreignId("UserId");
+            $table->foreign("UserId")->references("UserId")->on("user");
+            $table->foreignId("BukuId");
+            $table->foreign("BukuId")->references("BukuId")->on("buku");
+            $table->timestamps();
+        });
     }
 
     /**
@@ -19,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('koleksipribadi');
     }
 };

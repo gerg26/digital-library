@@ -51,4 +51,9 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
         Route::get('admin/user/delete/{userId}', [AdminService::class, "deleteUser"]);
         Route::post('admin/petugas/add', [AdminService::class, "addNewPetugas"]);
     });
+
+    Route::group(['middleware' => ['admin-or-petugas']], function() {
+        Route::get('admin/categories/delete/{KategoriID}', [AdminService::class, "deleteKategori"]);
+        Route::post('admin/petugas/add', [AdminService::class, "addNewKategori"]);
+    });
 });

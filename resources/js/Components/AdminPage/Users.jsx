@@ -4,7 +4,7 @@ import React from "react";
 import Swal from 'sweetalert2'
 import withReactContent from "sweetalert2-react-content";
 export default function Users({users}) {
-    // 
+    //
     let i = 0;
 
     // gets base url

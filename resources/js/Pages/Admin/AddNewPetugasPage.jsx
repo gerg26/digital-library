@@ -12,7 +12,7 @@ export default function AddNewPetugasPage({user}) {
 
     // handles save
     const handleSave = (ev) => {
-        // 
+        //
         ev.preventDefault();
 
         // gets form data
@@ -25,7 +25,7 @@ export default function AddNewPetugasPage({user}) {
         MySwal.fire({
             didOpen: () => {
                 MySwal.showLoading();
-            }  
+            }
         })
 
         // request
@@ -54,7 +54,7 @@ export default function AddNewPetugasPage({user}) {
             })
         })
 
-        // 
+        //
         return false;
     }
 
